@@ -2,6 +2,8 @@ public class divers extends Thread {
     String type;
     int id;
     boolean done = false;
+    //boolean tried = false;
+    int onteamid;
     public divers(String type, int id){
         this.type = type;
         this.id = id;
@@ -9,7 +11,7 @@ public class divers extends Thread {
     public void run() {
         while(!done){
             while(hq.isSigningUp()){
-                
+                //do nothing
             }
             if(type == "super"){
                 System.out.println("Super Citizen ID:"+Integer.toString(id) +" is signing up.");

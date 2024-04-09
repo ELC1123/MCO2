@@ -4,9 +4,11 @@ import java.util.List;
 public class hq {
     static public volatile int scount;
     static public volatile int rcount;
-    static private boolean signingup = false;
+    static public volatile boolean signingup = false;
     static List<divers> allDivers = new ArrayList<divers>();
     static public volatile int teamid = 0;
+    static int stotal = 2;
+    static int rtotal = 6;
     public static synchronized boolean isSigningUp(){
         boolean temp = signingup;
         if(!signingup){
@@ -18,8 +20,7 @@ public class hq {
         signingup = false;
     }
     public static void main(String[] args) {
-        int stotal = 2;
-        int rtotal = 6;
+        
         for (int i = 0; i < stotal; i++) {
             divers t = new divers("super",allDivers.size());
             t.start();
@@ -33,20 +34,26 @@ public class hq {
         while (true) {
             if (scount+rcount==4){
                 isSigningUp();
-                System.out.println("team "+ Integer.toString(teamid) +" is ready and now launching to battle (sc: "+ Integer.toString(scount) +" | rc: "+ Integer.toString(rcount)+")");
-                teamid++;
-                stotal -= scount;
-                rtotal -= rcount;
-                scount=0;
-                rcount=0;
-                if (stotal+rtotal<4 || stotal==0) {
-                    for (divers t : allDivers) {
-                        t.stop();
-                    }
+                if(check()){
                     break;
                 }
                 doneSigningUp();
             }
         }
+      }
+      public synchronized static boolean check(){
+        System.out.println("team "+ Integer.toString(teamid) +" is ready and now launching to battle (sc: "+ Integer.toString(scount) +" | rc: "+ Integer.toString(rcount)+")");
+        teamid++;
+        stotal -= scount;
+        rtotal -= rcount;
+        scount=0;
+        rcount=0;
+        if (stotal+rtotal<4 || stotal==0 || rtotal < 2) {
+            for (divers t : allDivers) {
+                t.stop();
+            }
+            return true;
+        }
+        return false;
       }
 }
