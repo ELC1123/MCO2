@@ -9,15 +9,16 @@ public class divers extends Thread {
         this.id = id;
     }
     public void run() {
+        if(type == "super"){
+            System.out.println("Super Citizen ID:"+Integer.toString(id) +" is signing up.");
+        }else if (type == "reg") {
+            System.out.println("Regular Citizen ID:"+Integer.toString(id) +" is signing up.");
+        }
         while(!done){
             while(hq.isSigningUp()){
                 //do nothing
             }
-            if(type == "super"){
-                System.out.println("Super Citizen ID:"+Integer.toString(id) +" is signing up.");
-            }else if (type == "reg") {
-                System.out.println("Regular Citizen ID:"+Integer.toString(id) +" is signing up.");
-            }
+            
             group();
             hq.doneSigningUp();
         }
