@@ -34,14 +34,14 @@ public class hq {
         while (true) {
             if (scount+rcount==4){
                 isSigningUp();
-                if(check()){
+                if(sendTeamToMission()){
                     break;
                 }
                 doneSigningUp();
             }
         }
       }
-      public synchronized static boolean check(){
+      public synchronized static boolean sendTeamToMission(){
         System.out.println("team "+ Integer.toString(teamid) +" is ready and now launching to battle (sc: "+ Integer.toString(scount) +" | rc: "+ Integer.toString(rcount)+")");
         teamid++;
         stotal -= scount;
