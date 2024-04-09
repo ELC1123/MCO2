@@ -52,9 +52,9 @@ public class hq {
             for (divers t : allDivers) {
                 t.stop();
             }
+            System.out.println("teams sent: "+ Integer.toString(teamid-1) +"Rest of the citizens are sent home.(sc: "+ Integer.toString(stotal) +" | rc: "+ Integer.toString(rtotal)+")");
             return true;
         }
-        System.out.println("teams sent: "+ Integer.toString(teamid-1) +"Rest of the citizens are sent home.(sc: "+ Integer.toString(stotal) +" | rc: "+ Integer.toString(rtotal)+")");
         return false;
       }
 }
