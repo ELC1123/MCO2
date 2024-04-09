@@ -12,9 +12,9 @@ public class divers extends Thread {
                 
             }
             if(type == "super"){
-                System.out.println("Super Citizen :"+Integer.toString(id) +" is signing up.");
+                System.out.println("Super Citizen ID:"+Integer.toString(id) +" is signing up.");
             }else if (type == "reg") {
-                System.out.println("Regular Citizen :"+Integer.toString(id) +" is signing up.");
+                System.out.println("Regular Citizen ID:"+Integer.toString(id) +" is signing up.");
             }
             group();
             hq.doneSigningUp();

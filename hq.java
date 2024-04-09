@@ -33,7 +33,7 @@ public class hq {
         while (true) {
             if (scount+rcount==4){
                 isSigningUp();
-                System.out.println("team "+ Integer.toString(teamid) +" is ready and now launching to battle (sc: "+ Integer.toString(scount) +" | rc: "+ Integer.toString(rcount));
+                System.out.println("team "+ Integer.toString(teamid) +" is ready and now launching to battle (sc: "+ Integer.toString(scount) +" | rc: "+ Integer.toString(rcount)+")");
                 teamid++;
                 stotal -= scount;
                 rtotal -= rcount;
