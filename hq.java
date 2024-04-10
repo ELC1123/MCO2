@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class hq {
     static public volatile int scount;
@@ -7,8 +8,7 @@ public class hq {
     static public volatile boolean signingup = false;
     static List<divers> allDivers = new ArrayList<divers>();
     static public volatile int teamid = 0;
-    static int stotal = 2;
-    static int rtotal = 6;
+    static int stotal, rtotal;
     public static synchronized boolean isSigningUp(){
         boolean temp = signingup;
         if(!signingup){
@@ -20,6 +20,11 @@ public class hq {
         signingup = false;
     }
     public static void main(String[] args) {
+        Scanner inputs = new Scanner(System.in);
+        System.out.println("Enter number of Super Citizens: ");
+        stotal = inputs.nextInt();
+        System.out.println("Enter number of Regular Citizens: ");
+        rtotal = inputs.nextInt();
         
         for (int i = 0; i < stotal; i++) {
             divers t = new divers("super",allDivers.size());
@@ -52,7 +57,7 @@ public class hq {
             for (divers t : allDivers) {
                 t.stop();
             }
-            System.out.println("teams sent: "+ Integer.toString(teamid) +" Rest of the citizens are sent home.(sc: "+ Integer.toString(stotal) +" | rc: "+ Integer.toString(rtotal)+")");
+            System.out.println("\nResults:\nTeams Sent: "+ Integer.toString(teamid) +" \nRest of the citizens are sent home.(sc: "+ Integer.toString(stotal) +" | rc: "+ Integer.toString(rtotal)+")");
             return true;
         }
         return false;
